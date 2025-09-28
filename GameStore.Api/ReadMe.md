@@ -42,9 +42,13 @@ docker run -p 127.0.0.1:8080:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOO
 - [Open Admin Console](http://localhost:8080)
 - [Create GameStore realm](http://localhost:8080/admin/master/console/#/master/realms)
 - [Register our GameStore API as a Client](http://localhost:8080/admin/master/console/#/gamestore/clients/add-client)
-- [Create a Client scope](http://localhost:8080/admin/master/console/#/gamestore/client-scopes)
-	- [Configure `Audience` mapper to send necessary claims in JWT](http://localhost:8080/admin/master/console/#/gamestore/client-scopes/9a0f994d-a4fe-41d5-9852-c355ac0174ca/mappers)
--
+- [Create `gamestore-all` Client scope](http://localhost:8080/admin/master/console/#/gamestore/client-scopes)
+	- [Configure `Audience` mapper to send necessary JWT claims](http://localhost:8080/admin/master/console/#/gamestore/client-scopes/9a0f994d-a4fe-41d5-9852-c355ac0174ca/mappers)
+- [Register Postman as a Client](http://localhost:8080/admin/master/console/#/gamestore/clients/add-client)
+	- [Assign `gamestore-all` client scope to Postman to leverage already configured JWT claims](http://localhost:8080/admin/master/console/#/gamestore/clients/31e4692e-fcd7-45de-806b-b56b2e3be2a6/clientScopes)
+- [Create user `victor`](http://localhost:8080/admin/master/console/#/gamestore/users/add-user)
+- [Fetch all endpoints from Keycloak](http://localhost:8080/realms/gamestore/.well-known/openid-configuration)
+- [Fetch all endpoints from Keycloak](http://localhost:8080/realms/gamestore/.well-known/openid-configuration)
 
 ## Usage
 
@@ -53,3 +57,6 @@ To run
 ```powershell
 dotnet run
 ```
+
+## Useful links
+- [Decode tokens](https://jwt.ms/)

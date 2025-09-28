@@ -44,7 +44,8 @@ public static class GamesEndpoints
             // HTTP response will contain `location` header with URL
             // to fetch just created game e.g. https://localhost:7066/games/2
             return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game.ToGameDetailsDto());
-        });
+        })
+        .RequireAuthorization();
 
         // PUT /games/1
         group.MapPut("/{id}", async (int id, UpdateGameDto updatedGame, GameStoreContext dbContext) =>
@@ -59,7 +60,8 @@ public static class GamesEndpoints
 
             await dbContext.SaveChangesAsync();
             return Results.NoContent();
-        });
+        })
+        .RequireAuthorization();
 
         // DELETE /games/1
         group.MapDelete("/{id}", async (int id, GameStoreContext dbContext) =>
@@ -68,7 +70,8 @@ public static class GamesEndpoints
                      .Where(game => game.Id == id)
                      .ExecuteDeleteAsync();
             return Results.NoContent();
-        });
+        })
+        .RequireAuthorization();
 
         return group;
     }
