@@ -48,7 +48,6 @@ docker run -p 127.0.0.1:8080:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOO
 	- [Assign `gamestore-all` client scope to Postman to leverage already configured JWT claims](http://localhost:8080/admin/master/console/#/gamestore/clients/31e4692e-fcd7-45de-806b-b56b2e3be2a6/clientScopes)
 - [Create user `victor`](http://localhost:8080/admin/master/console/#/gamestore/users/add-user)
 - [Fetch all endpoints from Keycloak](http://localhost:8080/realms/gamestore/.well-known/openid-configuration)
-- [Fetch all endpoints from Keycloak](http://localhost:8080/realms/gamestore/.well-known/openid-configuration)
 
 ## Usage
 
