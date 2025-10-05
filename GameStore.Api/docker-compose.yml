@@ -14,4 +14,4 @@ services:
         - keycloak-data:/opt/keycloak/data
 
 volumes:
-    keycloak-data:   
+    keycloak-data:

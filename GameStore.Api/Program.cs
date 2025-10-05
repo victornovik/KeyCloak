@@ -22,9 +22,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuer = true,
             ValidIssuer = "http://localhost:8080/realms/gamestore",
+
             ValidateAudience = true,
             ValidAudience = "gamestore-api",
-            ValidateIssuerSigningKey = false,
+
+            //ValidateSignatureLast = false,
+
             ConfigurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(
                 "http://localhost:8080/realms/gamestore/.well-known/openid-configuration",
                 new OpenIdConnectConfigurationRetriever(),
