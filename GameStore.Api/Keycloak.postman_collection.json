@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "c52e46b0-6d43-4d34-8926-f19b238319d5",
+		"name": "Keycloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2561868"
+	},
+	"item": [
+		{
+			"name": "Get all games",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/games",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get game",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/games/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"games",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create game",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "gamestore-api-all",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "postman",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8080/realms/gamestore/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8080/realms/gamestore/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://oauth.pstmn.io/v1/callback",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code_with_pkce",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"name\": \"Chess\",\r\n    \"genreId\": 3,\r\n    \"price\": 49,\r\n    \"releaseDate\": \"1994-09-06\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/games",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"games"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update game",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"name\": \"Street Fighter II\",\r\n    \"genreId\": 1,\r\n    \"price\": 29.99,\r\n    \"releaseDate\": \"1991-09-30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/games/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"games",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete game",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "gamestore-api-all",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "postman",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8080/realms/gamestore/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8080/realms/gamestore/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://oauth.pstmn.io/v1/callback",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code_with_pkce",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/games/7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"games",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get token",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "gamestore-api-all",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "postman",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8080/realms/gamestore/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8080/realms/gamestore/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://oauth.pstmn.io/v1/callback",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code_with_pkce",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get OIDC configuration",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/realms/gamestore/.well-known/openid-configuration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"gamestore",
+						".well-known",
+						"openid-configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JWKS",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/realms/gamestore/protocol/openid-connect/certs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"gamestore",
+						"protocol",
+						"openid-connect",
+						"certs"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": ""
+		}
+	]
+}

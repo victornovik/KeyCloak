@@ -1,9 +1,6 @@
 using GameStore.Api.Data;
 using GameStore.Api.Endpoints;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Protocols;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
@@ -15,30 +12,28 @@ builder.Configuration.AddJsonFile("secrets.json", optional: true, reloadOnChange
 var connString = builder.Configuration.GetConnectionString("GameStore");
 builder.Services.AddSqlite<GameStoreContext>(connString);
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt =>
     {
-        opt.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidIssuer = "http://localhost:8080/realms/gamestore",
+        //opt.TokenValidationParameters = new TokenValidationParameters
+        //{
+        //    ValidateIssuer = true,
+        //    ValidIssuer = "http://localhost:8080/realms/gamestore",
 
-            ValidateAudience = true,
-            ValidAudience = "gamestore-api",
+        //    ValidateAudience = true,
+        //    ValidAudience = "gamestore-api",
 
-            //ValidateSignatureLast = false,
+        //    ConfigurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(
+        //        "http://localhost:8080/realms/gamestore/.well-known/openid-configuration",
+        //        new OpenIdConnectConfigurationRetriever(),
+        //        new HttpDocumentRetriever { RequireHttps = false } // We want to use HTTP schema instead of HTTPS in all Keycloak URLs
+        //    )
+        //};
 
-            ConfigurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(
-                "http://localhost:8080/realms/gamestore/.well-known/openid-configuration",
-                new OpenIdConnectConfigurationRetriever(),
-                new HttpDocumentRetriever() { RequireHttps = false }
-            )
-        };
-
-        //opt.Authority = "http://localhost:8080/realms/gamestore";
-        //opt.Audience = "gamestore-api";
-        //// If we want to use HTTP schema instead of HTTPS in all Keycloak URLs
-        //opt.RequireHttpsMetadata = false;
+        opt.Authority = "http://localhost:8080/realms/gamestore";
+        opt.Audience = "gamestore-api";
+        opt.RequireHttpsMetadata = false;
     });
 
 builder.Services.AddAuthorizationBuilder();

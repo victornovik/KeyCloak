@@ -1,7 +1,6 @@
 using GameStore.Api.Data;
 using GameStore.Api.Dtos;
 using GameStore.Api.Mapping;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Api.Endpoints;
@@ -21,7 +20,8 @@ public static class GamesEndpoints
                     .Include(game => game.Genre)
                     .Select(game => game.ToGameSummaryDto())
                     .AsNoTracking()
-                    .ToListAsync());
+                    .ToListAsync()
+            );
 
         // GET /games/1
         group.MapGet("/{id}", async (int id, GameStoreContext dbContext) =>
@@ -42,8 +42,7 @@ public static class GamesEndpoints
             dbContext.Games.Add(game);
             await dbContext.SaveChangesAsync();
 
-            // HTTP response will contain `location` header with URL
-            // to fetch just created game e.g. https://localhost:7066/games/2
+            // HTTP response will contain `location` header with URL to fetch the created game e.g. https://localhost:7066/games/2
             return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game.ToGameDetailsDto());
         })
         .RequireAuthorization();

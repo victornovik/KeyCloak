@@ -51,11 +51,24 @@ docker run -p 127.0.0.1:8080:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOO
 
 ## Usage
 
-To run
-
 ```powershell
 dotnet run
 ```
 
-## Useful links
-- [Decode tokens](https://jwt.ms/)
+Generate our own JWT with `Role` claim
+
+```powershell
+dotnet user-jwts create --role "admin"
+dotnet user-jwts create --role "player" --name "ing"
+dotnet user-jwts create --role "player" --name "ing" --claim "top=2"
+```
+
+Print out just generated JWT
+
+```powershell
+dotnet user-jwts print 17774311
+```
+
+## Useful links for JWT decoding
+- [https://jwt.ms/](https://jwt.ms/)
+- [https://jwt.io/](https://jwt.io/)
