@@ -88,7 +88,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{    \r\n    \"name\": \"Chess\",\r\n    \"genreId\": 3,\r\n    \"price\": 49,\r\n    \"releaseDate\": \"1994-09-06\"\r\n}",
+					"raw": "{    \r\n    \"name\": \"Astro Bot\",\r\n    \"genreId\": 5,\r\n    \"price\": 49.99,\r\n    \"releaseDate\": \"1994-09-06\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -184,13 +184,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{url}}/games/7",
+					"raw": "{{url}}/games/12",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"games",
-						"7"
+						"12"
 					]
 				}
 			},
@@ -204,7 +204,7 @@
 					"oauth2": [
 						{
 							"key": "scope",
-							"value": "gamestore-api-all",
+							"value": "gamestore-api-full-access",
 							"type": "string"
 						},
 						{
@@ -293,6 +293,61 @@
 						"protocol",
 						"openid-connect",
 						"certs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get genres",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InVzZXIiLCJzdWIiOiJ1c2VyIiwianRpIjoiYmQ4NDBjNCIsInJvbGUiOiJhZG1pbiIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUwNDEiLCJodHRwczovL2xvY2FsaG9zdDo3MDY2Il0sIm5iZiI6MTc2MDE5NTMxNywiZXhwIjoxNzY4MTQ0MTE3LCJpYXQiOjE3NjAxOTUzMTgsImlzcyI6ImRvdG5ldC11c2VyLWp3dHMifQ.HKloQ9LKy2Zp8WUzSQqK-ls5l3Laprdz9knyA1_JJgU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Look up genres",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImluZyIsInN1YiI6ImluZyIsImp0aSI6IjliYmFlMmE1Iiwicm9sZSI6InBsYXllciIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUwNDEiLCJodHRwczovL2xvY2FsaG9zdDo3MDY2Il0sIm5iZiI6MTc2MDE5NjI5NywiZXhwIjoxNzY4MTQ1MDk3LCJpYXQiOjE3NjAxOTYyOTcsImlzcyI6ImRvdG5ldC11c2VyLWp3dHMifQ.dYuY9pjkQAo_LQwzgEX2BP5uQH-RSQll7nHjDxzr73E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/genres/lookup",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres",
+						"lookup"
 					]
 				}
 			},
